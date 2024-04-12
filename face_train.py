@@ -1,6 +1,7 @@
 import cv2 as cv
 import os
 import numpy as np
+import time
 
 haar_cascade = cv.CascadeClassifier('haarcascade_face.xml')
 
@@ -10,8 +11,9 @@ features = []
 train_DIR = r'C:\Users\Konrad\PycharmProjects\Projekt1\Inzynierka_ALL\Photos\Train'
 
 list_person = os.listdir(train_DIR)
-print(f'List_person: {list_person}')
+print(f'\nLista wszystkich osob: {list_person}\n')
 
+# Wydobycie cech z obrazow z przypisanymi etykietami.
 def train_function():
 
     for root, dirs, files in os.walk(train_DIR): #tworzy sie lista files
@@ -19,6 +21,7 @@ def train_function():
 
             temp_person = os.path.basename(root)
             label = list_person.index(temp_person)
+            print(f'\nImie: {temp_person}, Etykieta: {label}\n')
 
             img_path = os.path.join(root, file)
             img_read = cv.imread(img_path)
@@ -38,17 +41,24 @@ def train_function():
 
 train_function()
 
-print(f'Lenght of the features: {len(features)}')
-print(f'Lenght of the labels: {len(labels)}')
 
-#Conversion to numpy array
-labels = np.array(labels)
+print(f'Features: {len(features)}')
+print(f'Labels: {len(labels)}')
+
+
+# Sekcja wyboru algorytmu szkolenia modelu, (dostarczanie do niego cech z etykietami):
+labels = np.array(labels)  # Konwersja do tablicy NumPy
+
+start = time.time()
 
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
+# face_recognizer = cv.face.EigenFaceRecognizer_create()
+# face_recognizer = cv.face.FisherFaceRecognizer_create()
 face_recognizer.train(features, labels)
 
+end = time.time()
 face_recognizer.write('face_trained.yml')
 
-
+print(f'Czas trwania procesu szkolenia modelu: {end - start}')
 
 

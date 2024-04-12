@@ -7,7 +7,7 @@ haar_cascade = cv.CascadeClassifier('haarcascade_face.xml')
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
 face_recognizer.read('face_trained.yml')
 
-train_DIR = r'C:\Users\Konrad\PycharmProjects\Projekt1\Inzynierka_ALL\Photos\Train'
+train_DIR = r'/Photos/Train'
 
 list_person = os.listdir(train_DIR)
 print(f'List of trained person: {list_person}')
@@ -18,7 +18,7 @@ def test_class():
     grupa_T1 = ['Klaudia', 'Jakub', 'Konrad', 'Arkadiusz', 'Maciej']
     grupa_T2 = ['Szymon', 'Marta', 'Sebastian', 'Patryk', 'Oliwia']
 
-    test_DIR = r'C:\Users\Konrad\PycharmProjects\Projekt1\Inzynierka_ALL\Photos\Classroom1'
+    test_DIR = r'/Photos/Classroom1'
     list_person_detected = []
 
     for root, dirs, files in os.walk(test_DIR): #tworzy sie lista files

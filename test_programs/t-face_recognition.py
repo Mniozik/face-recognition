@@ -7,7 +7,7 @@ haar_cascade = cv.CascadeClassifier('haarcascade_face.xml')
 face_recognizer = cv.face.LBPHFaceRecognizer_create()
 face_recognizer.read('face_trained.yml')
 
-train_DIR = r'C:\Users\Konrad\PycharmProjects\Projekt1\Inzynierka_ALL\Photos\Train'
+train_DIR = r'/Photos/Train'
 
 list_person = os.listdir(train_DIR)
 print(f'\nLista wszystkich osob: {list_person}\n')

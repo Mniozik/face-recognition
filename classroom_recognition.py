@@ -13,9 +13,11 @@ print(f'\nLista wszystkich osob: {list_person}\n')
 
 def test_class():
 
+    # Tu definiujemy imiona osob przypisanych do danych grup.
     grupa_1 = ['Klaudia', 'Jakub', 'Konrad', 'Arkadiusz', 'Maciek']
     grupa_2 = ['Szymon', 'Marta', 'Sebastian', 'Patryk', 'Oliwia']
 
+    # W tym katalogu mamy zdjecia osob, ktore przyszly na zajecia.
     test_DIR = r'C:\Users\Konrad\PycharmProjects\Projekt1\Inzynierka_ALL\Photos\Classroom1'
     list_person_detected = []
 
